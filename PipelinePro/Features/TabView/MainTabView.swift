@@ -31,18 +31,18 @@ struct MainTabView: View {
                     Label("Map", systemImage: "map")
                 }
             
-//            AddressView(viewModel: viewModel, locationManager: locationManager)
-//                .tabItem {
-//                    Label("Address", systemImage: "house")
-//                }
+            AddressView(viewModel: viewModel, locationManager: locationManager)
+                .tabItem {
+                    Label("Address", systemImage: "house")
+                }
             
-//            SearchView(viewModel: viewModel)
-//                .tabItem {
-//                    Label("Search", systemImage: "magnifyingglass")
-//                }
+            SearchView(viewModel: viewModel)
+                .tabItem {
+                    Label("Search", systemImage: "magnifyingglass")
+                }
         }
         .onAppear {
-            viewModel.requestPermission()
+            locationManager.requestLocationPermission()
         }
     }
 }

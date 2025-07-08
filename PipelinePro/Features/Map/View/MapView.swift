@@ -14,15 +14,17 @@ struct MapView: View {
     @ObservedObject var locationManager: LocationManager
     
     var body: some View {
-        Map(coordinateRegion: $viewModel.region, showsUserLocation: true)
-            .ignoresSafeArea()
-            .overlay {
-                if locationManager.authorizationStatus == .notDetermined {
-                    Text("Please allow location access")
-                        .padding()
-                        .background(.ultraThinMaterial)
-                        .cornerRadius(8)
-                }
+        Map {
+            UserAnnotation()
+        }
+        .ignoresSafeArea()
+        .overlay {
+            if locationManager.authorizationStatus == .notDetermined {
+                Text("Please allow location access")
+                    .padding()
+                    .background(.ultraThinMaterial)
+                    .cornerRadius(8)
             }
+        }
     }
 }

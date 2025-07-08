@@ -17,20 +17,23 @@ struct SearchView: View {
             TextField("Search nearby...", text: $viewModel.searchQuery)
                 .textFieldStyle(.roundedBorder)
                 .padding()
-                .onSubmit {
-                    DispatchQueue.main.async {
-                        Task { await viewModel.searchNearby() }
+            
+            Map {
+                ForEach(viewModel.searchResults) { place in
+                    Annotation(place.name, coordinate: place.coordinate.clCoordinate) {
+                        VStack {
+                            Image(systemName: "mappin.circle.fill")
+                                .foregroundColor(.red)
+                                .font(.title2)
+                            Text(place.name)
+                                .font(.caption)
+                                .padding(4)
+                                .background(.ultraThinMaterial)
+                                .cornerRadius(4)
+                        }
                     }
                 }
-            
-            Map(coordinateRegion: $viewModel.region, annotationItems: viewModel.searchResults) { place in
-                MapAnnotation(coordinate: place.coordinate.clCoordinate) {
-                    Image(systemName: "mappin.circle.fill")
-                        .foregroundColor(Constants.defaultPinSwiftUIColor)
-                        .font(.title)
-                }
             }
-            .ignoresSafeArea()
             
             List(viewModel.searchResults) { place in
                 VStack(alignment: .leading) {

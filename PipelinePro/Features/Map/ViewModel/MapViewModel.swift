@@ -27,47 +27,36 @@ final class MapViewModel {
     // MARK: - Initializers
     init(locationService: LocationService) {
         self.locationService = locationService
-        let defaultCoordinate = Coordinate(latitude: 37.7749, longitude: -122.4194) // San Francisco
+        let defaultCoordinate = Coordinate(latitude: 37.7749, longitude: -122.4194)
         self.region = MKCoordinateRegion(
             center: locationService.currentLocation ?? defaultCoordinate,
-            span: Constants.defaultRegionSpan
+            span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
         )
     }
     
-    // MARK: - Public API Methods
-    /// Requests location permission
-    func requestPermission() {
-        locationService.requestLocationPermission()
+    // MARK: - Public Methods
+    
+    /// Updates the map region to show the user's current location
+    func updateToUserLocation() {
+        if let coordinate = locationService.currentLocation {
+            self.region = MKCoordinateRegion(
+                center: coordinate,
+                span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+            )
+        }
     }
     
-    /// Performs a search for nearby places
-    func searchNearby() async {
-        guard !searchQuery.isEmpty, let location = locationService.currentLocation else { return }
-        let request = MKLocalSearch.Request()
-        request.naturalLanguageQuery = searchQuery
-        request.region = MKCoordinateRegion(
-            center: location,
-            latitudinalMeters: Constants.defaultSearchRadius,
-            longitudinalMeters: Constants.defaultSearchRadius
-        )
-        
-        do {
-            let search = MKLocalSearch(request: request)
-            let response = try await search.start()
-            await MainActor.run {
-                searchResults = response.mapItems.map { item in
-                    Place(
-                        name: item.name ?? "Unknown",
-                        address: item.placemark.formattedAddress,
-                        coordinate: CoordinateCodable(
-                            latitude: item.placemark.coordinate.latitude,
-                            longitude: item.placemark.coordinate.longitude
-                        )
-                    )
+    /// Updates the user's address based on current location
+    func updateUserAddress() async {
+        if let coordinate = locationService.currentLocation {
+            do {
+                let address = try await locationService.getAddress(from: coordinate)
+                await MainActor.run {
+                    self.userAddress = address
                 }
+            } catch {
+                print("Failed to get address: \(error)")
             }
-        } catch {
-            print("Search error: \(error.localizedDescription)")
         }
     }
     
@@ -76,25 +65,7 @@ final class MapViewModel {
         selectedPlace = place
         region = MKCoordinateRegion(
             center: place.coordinate.clCoordinate,
-            span: Constants.defaultRegionSpan
+            span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
         )
-    }
-    
-    /// Updates the map region to the current location
-    func updateToCurrentLocation() {
-        guard let location = locationService.currentLocation else { return }
-        region = MKCoordinateRegion(center: location, span: Constants.defaultRegionSpan)
-        Task { await updateUserAddress() }
-    }
-    
-    // MARK: - Internal Logic / Helpers
-    @MainActor
-    private func updateUserAddress() async {
-        guard let coordinate = locationService.currentLocation else { return }
-        do {
-            userAddress = try await locationService.getAddress(from: coordinate)
-        } catch {
-            userAddress = "Unable to fetch address"
-        }
     }
 }
