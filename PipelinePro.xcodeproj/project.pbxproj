@@ -6,6 +6,26 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		0FA4635F2E1D040000C85D43 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FA463592E1D040000C85D43 /* Preview Assets.xcassets */; };
+		0FA463602E1D040000C85D43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FA4635B2E1D040000C85D43 /* Assets.xcassets */; };
+		0FA463652E1D040400C85D43 /* PipelineProTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA463632E1D040400C85D43 /* PipelineProTests.swift */; };
+		0FA463692E1D040800C85D43 /* PipelineProUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA463662E1D040800C85D43 /* PipelineProUITests.swift */; };
+		0FA4636A2E1D040800C85D43 /* PipelineProUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA463672E1D040800C85D43 /* PipelineProUITestsLaunchTests.swift */; };
+		0FA463972E1D094100C85D43 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA463902E1D094100C85D43 /* Place.swift */; };
+		0FA463982E1D094100C85D43 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA463932E1D094100C85D43 /* LocationService.swift */; };
+		0FA463992E1D094100C85D43 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA463922E1D094100C85D43 /* LocationManager.swift */; };
+		0FA4639A2E1D094100C85D43 /* CoordinateCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA4638F2E1D094100C85D43 /* CoordinateCodable.swift */; };
+		0FA4639B2E1D094100C85D43 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA463952E1D094100C85D43 /* Constants.swift */; };
+		0FA4639C2E1D094100C85D43 /* PipelineProApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA4637F2E1D094100C85D43 /* PipelineProApp.swift */; };
+		0FA4639D2E1D094100C85D43 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA4638A2E1D094100C85D43 /* SearchView.swift */; };
+		0FA4639E2E1D094100C85D43 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA463852E1D094100C85D43 /* MapView.swift */; };
+		0FA4639F2E1D094100C85D43 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA4638E2E1D094100C85D43 /* Coordinate.swift */; };
+		0FA463A02E1D094100C85D43 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA463872E1D094100C85D43 /* MapViewModel.swift */; };
+		0FA463A12E1D094100C85D43 /* MapTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA463842E1D094100C85D43 /* MapTabView.swift */; };
+		0FA463A22E1D094100C85D43 /* AddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA463812E1D094100C85D43 /* AddressView.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		0FA4633D2E1D03F400C85D43 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,25 +47,24 @@
 		0FA4632C2E1D03F300C85D43 /* PipelinePro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PipelinePro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FA4633C2E1D03F400C85D43 /* PipelineProTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PipelineProTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FA463462E1D03F400C85D43 /* PipelineProUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PipelineProUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0FA463592E1D040000C85D43 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0FA4635B2E1D040000C85D43 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0FA463632E1D040400C85D43 /* PipelineProTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PipelineProTests.swift; sourceTree = "<group>"; };
+		0FA463662E1D040800C85D43 /* PipelineProUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PipelineProUITests.swift; sourceTree = "<group>"; };
+		0FA463672E1D040800C85D43 /* PipelineProUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PipelineProUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		0FA4637F2E1D094100C85D43 /* PipelineProApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PipelineProApp.swift; sourceTree = "<group>"; };
+		0FA463812E1D094100C85D43 /* AddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressView.swift; sourceTree = "<group>"; };
+		0FA463842E1D094100C85D43 /* MapTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTabView.swift; sourceTree = "<group>"; };
+		0FA463852E1D094100C85D43 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		0FA463872E1D094100C85D43 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		0FA4638A2E1D094100C85D43 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		0FA4638E2E1D094100C85D43 /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
+		0FA4638F2E1D094100C85D43 /* CoordinateCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateCodable.swift; sourceTree = "<group>"; };
+		0FA463902E1D094100C85D43 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		0FA463922E1D094100C85D43 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		0FA463932E1D094100C85D43 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		0FA463952E1D094100C85D43 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		0FA4632E2E1D03F300C85D43 /* PipelinePro */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = PipelinePro;
-			sourceTree = "<group>";
-		};
-		0FA4633F2E1D03F400C85D43 /* PipelineProTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = PipelineProTests;
-			sourceTree = "<group>";
-		};
-		0FA463492E1D03F400C85D43 /* PipelineProUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = PipelineProUITests;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		0FA463292E1D03F300C85D43 /* Frameworks */ = {
@@ -75,9 +94,9 @@
 		0FA463232E1D03F300C85D43 = {
 			isa = PBXGroup;
 			children = (
-				0FA4632E2E1D03F300C85D43 /* PipelinePro */,
-				0FA4633F2E1D03F400C85D43 /* PipelineProTests */,
-				0FA463492E1D03F400C85D43 /* PipelineProUITests */,
+				0FA4635E2E1D040000C85D43 /* PipelinePro */,
+				0FA463642E1D040400C85D43 /* PipelineProTests */,
+				0FA463682E1D040800C85D43 /* PipelineProUITests */,
 				0FA4632D2E1D03F300C85D43 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,6 +109,148 @@
 				0FA463462E1D03F400C85D43 /* PipelineProUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		0FA4635A2E1D040000C85D43 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				0FA463592E1D040000C85D43 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0FA4635E2E1D040000C85D43 /* PipelinePro */ = {
+			isa = PBXGroup;
+			children = (
+				0FA4635A2E1D040000C85D43 /* Preview Content */,
+				0FA4635B2E1D040000C85D43 /* Assets.xcassets */,
+				0FA463802E1D094100C85D43 /* App */,
+				0FA4638D2E1D094100C85D43 /* Features */,
+				0FA463912E1D094100C85D43 /* Models */,
+				0FA463942E1D094100C85D43 /* Services */,
+				0FA463962E1D094100C85D43 /* Utilities */,
+			);
+			path = PipelinePro;
+			sourceTree = "<group>";
+		};
+		0FA463642E1D040400C85D43 /* PipelineProTests */ = {
+			isa = PBXGroup;
+			children = (
+				0FA463632E1D040400C85D43 /* PipelineProTests.swift */,
+			);
+			path = PipelineProTests;
+			sourceTree = "<group>";
+		};
+		0FA463682E1D040800C85D43 /* PipelineProUITests */ = {
+			isa = PBXGroup;
+			children = (
+				0FA463662E1D040800C85D43 /* PipelineProUITests.swift */,
+				0FA463672E1D040800C85D43 /* PipelineProUITestsLaunchTests.swift */,
+			);
+			path = PipelineProUITests;
+			sourceTree = "<group>";
+		};
+		0FA463802E1D094100C85D43 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				0FA4637F2E1D094100C85D43 /* PipelineProApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		0FA463822E1D094100C85D43 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0FA463812E1D094100C85D43 /* AddressView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0FA463832E1D094100C85D43 /* Address */ = {
+			isa = PBXGroup;
+			children = (
+				0FA463822E1D094100C85D43 /* View */,
+			);
+			path = Address;
+			sourceTree = "<group>";
+		};
+		0FA463862E1D094100C85D43 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0FA463842E1D094100C85D43 /* MapTabView.swift */,
+				0FA463852E1D094100C85D43 /* MapView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0FA463882E1D094100C85D43 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0FA463872E1D094100C85D43 /* MapViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0FA463892E1D094100C85D43 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				0FA463862E1D094100C85D43 /* View */,
+				0FA463882E1D094100C85D43 /* ViewModel */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		0FA4638B2E1D094100C85D43 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0FA4638A2E1D094100C85D43 /* SearchView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0FA4638C2E1D094100C85D43 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				0FA4638B2E1D094100C85D43 /* View */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		0FA4638D2E1D094100C85D43 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				0FA463832E1D094100C85D43 /* Address */,
+				0FA463892E1D094100C85D43 /* Map */,
+				0FA4638C2E1D094100C85D43 /* Search */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		0FA463912E1D094100C85D43 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0FA4638E2E1D094100C85D43 /* Coordinate.swift */,
+				0FA4638F2E1D094100C85D43 /* CoordinateCodable.swift */,
+				0FA463902E1D094100C85D43 /* Place.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0FA463942E1D094100C85D43 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				0FA463922E1D094100C85D43 /* LocationManager.swift */,
+				0FA463932E1D094100C85D43 /* LocationService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		0FA463962E1D094100C85D43 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				0FA463952E1D094100C85D43 /* Constants.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -106,9 +267,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				0FA4632E2E1D03F300C85D43 /* PipelinePro */,
 			);
 			name = PipelinePro;
 			packageProductDependencies = (
@@ -130,9 +288,6 @@
 			dependencies = (
 				0FA4633E2E1D03F400C85D43 /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				0FA4633F2E1D03F400C85D43 /* PipelineProTests */,
-			);
 			name = PipelineProTests;
 			packageProductDependencies = (
 			);
@@ -152,9 +307,6 @@
 			);
 			dependencies = (
 				0FA463482E1D03F400C85D43 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				0FA463492E1D03F400C85D43 /* PipelineProUITests */,
 			);
 			name = PipelineProUITests;
 			packageProductDependencies = (
@@ -212,6 +364,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FA4635F2E1D040000C85D43 /* Preview Assets.xcassets in Resources */,
+				0FA463602E1D040000C85D43 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +390,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FA463972E1D094100C85D43 /* Place.swift in Sources */,
+				0FA463982E1D094100C85D43 /* LocationService.swift in Sources */,
+				0FA463992E1D094100C85D43 /* LocationManager.swift in Sources */,
+				0FA4639A2E1D094100C85D43 /* CoordinateCodable.swift in Sources */,
+				0FA4639B2E1D094100C85D43 /* Constants.swift in Sources */,
+				0FA4639C2E1D094100C85D43 /* PipelineProApp.swift in Sources */,
+				0FA4639D2E1D094100C85D43 /* SearchView.swift in Sources */,
+				0FA4639E2E1D094100C85D43 /* MapView.swift in Sources */,
+				0FA4639F2E1D094100C85D43 /* Coordinate.swift in Sources */,
+				0FA463A02E1D094100C85D43 /* MapViewModel.swift in Sources */,
+				0FA463A12E1D094100C85D43 /* MapTabView.swift in Sources */,
+				0FA463A22E1D094100C85D43 /* AddressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,6 +409,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FA463652E1D040400C85D43 /* PipelineProTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,6 +417,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FA463692E1D040800C85D43 /* PipelineProUITests.swift in Sources */,
+				0FA4636A2E1D040800C85D43 /* PipelineProUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,7 +578,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.demo.PipelinePro;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pipelinepro.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -438,7 +607,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.demo.PipelinePro;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pipelinepro.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
