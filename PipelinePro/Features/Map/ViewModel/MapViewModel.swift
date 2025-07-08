@@ -12,13 +12,14 @@ import CoreLocation
 // MARK: - View Models
 
 /// View model for managing map-related state and logic
-final class MapViewModel: ObservableObject {
+@Observable
+final class MapViewModel {
     // MARK: - Published State / UI State
-    @Published var region: MKCoordinateRegion
-    @Published var searchQuery: String = ""
-    @Published var searchResults: [Place] = []
-    @Published var selectedPlace: Place?
-    @Published private(set) var userAddress: String = "Fetching address..."
+    var region: MKCoordinateRegion
+    var searchQuery: String = ""
+    var searchResults: [Place] = []
+    var selectedPlace: Place?
+    private(set) var userAddress: String = "Fetching address..."
     
     // MARK: - Injected Dependencies
     private let locationService: LocationService
@@ -31,7 +32,6 @@ final class MapViewModel: ObservableObject {
             center: locationService.currentLocation ?? defaultCoordinate,
             span: Constants.defaultRegionSpan
         )
-        Task { await updateUserAddress() }
     }
     
     // MARK: - Public API Methods
@@ -54,15 +54,17 @@ final class MapViewModel: ObservableObject {
         do {
             let search = MKLocalSearch(request: request)
             let response = try await search.start()
-            searchResults = response.mapItems.map { item in
-                Place(
-                    name: item.name ?? "Unknown",
-                    address: item.placemark.formattedAddress,
-                    coordinate: CoordinateCodable(
-                        latitude: item.placemark.coordinate.latitude,
-                        longitude: item.placemark.coordinate.longitude
+            await MainActor.run {
+                searchResults = response.mapItems.map { item in
+                    Place(
+                        name: item.name ?? "Unknown",
+                        address: item.placemark.formattedAddress,
+                        coordinate: CoordinateCodable(
+                            latitude: item.placemark.coordinate.latitude,
+                            longitude: item.placemark.coordinate.longitude
+                        )
                     )
-                )
+                }
             }
         } catch {
             print("Search error: \(error.localizedDescription)")
@@ -78,7 +80,15 @@ final class MapViewModel: ObservableObject {
         )
     }
     
+    /// Updates the map region to the current location
+    func updateToCurrentLocation() {
+        guard let location = locationService.currentLocation else { return }
+        region = MKCoordinateRegion(center: location, span: Constants.defaultRegionSpan)
+        Task { await updateUserAddress() }
+    }
+    
     // MARK: - Internal Logic / Helpers
+    @MainActor
     private func updateUserAddress() async {
         guard let coordinate = locationService.currentLocation else { return }
         do {
@@ -86,12 +96,5 @@ final class MapViewModel: ObservableObject {
         } catch {
             userAddress = "Unable to fetch address"
         }
-    }
-    
-    // MARK: - Notification Handling
-    func handleLocationUpdate(_ location: Coordinate?) {
-        guard let location = location else { return }
-        region = MKCoordinateRegion(center: location, span: Constants.defaultRegionSpan)
-        Task { await updateUserAddress() }
     }
 }

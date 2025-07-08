@@ -13,13 +13,17 @@ import MapKit
 final class LocationManager: NSObject, LocationService, ObservableObject, CLLocationManagerDelegate {
     private let manager = CLLocationManager()
     @Published private(set) var currentLocation: Coordinate?
-    @Published private(set) var authorizationStatus: CLAuthorizationStatus
+    @Published private(set) var authorizationStatus: CLAuthorizationStatus = .notDetermined
     
     override init() {
-        authorizationStatus = manager.authorizationStatus
         super.init()
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
+        
+        // Defer the authorization status check to avoid publishing during init
+        DispatchQueue.main.async {
+            self.authorizationStatus = self.manager.authorizationStatus
+        }
     }
     
     func requestLocationPermission() {
@@ -27,15 +31,19 @@ final class LocationManager: NSObject, LocationService, ObservableObject, CLLoca
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        authorizationStatus = status
-        if status == .authorizedWhenInUse || status == .authorizedAlways {
-            manager.startUpdatingLocation()
+        DispatchQueue.main.async {
+            self.authorizationStatus = status
+            if status == .authorizedWhenInUse || status == .authorizedAlways {
+                manager.startUpdatingLocation()
+            }
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
-        currentLocation = location.coordinate
+        DispatchQueue.main.async {
+            self.currentLocation = location.coordinate
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

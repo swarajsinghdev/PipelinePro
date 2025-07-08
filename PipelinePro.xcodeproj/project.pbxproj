@@ -22,7 +22,7 @@
 		0FA4639E2E1D094100C85D43 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA463852E1D094100C85D43 /* MapView.swift */; };
 		0FA4639F2E1D094100C85D43 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA4638E2E1D094100C85D43 /* Coordinate.swift */; };
 		0FA463A02E1D094100C85D43 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA463872E1D094100C85D43 /* MapViewModel.swift */; };
-		0FA463A12E1D094100C85D43 /* MapTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA463842E1D094100C85D43 /* MapTabView.swift */; };
+		0FA463A12E1D094100C85D43 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA463842E1D094100C85D43 /* MainTabView.swift */; };
 		0FA463A22E1D094100C85D43 /* AddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA463812E1D094100C85D43 /* AddressView.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,7 +54,7 @@
 		0FA463672E1D040800C85D43 /* PipelineProUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PipelineProUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		0FA4637F2E1D094100C85D43 /* PipelineProApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PipelineProApp.swift; sourceTree = "<group>"; };
 		0FA463812E1D094100C85D43 /* AddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressView.swift; sourceTree = "<group>"; };
-		0FA463842E1D094100C85D43 /* MapTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTabView.swift; sourceTree = "<group>"; };
+		0FA463842E1D094100C85D43 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		0FA463852E1D094100C85D43 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		0FA463872E1D094100C85D43 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		0FA4638A2E1D094100C85D43 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
@@ -177,7 +177,6 @@
 		0FA463862E1D094100C85D43 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0FA463842E1D094100C85D43 /* MapTabView.swift */,
 				0FA463852E1D094100C85D43 /* MapView.swift */,
 			);
 			path = View;
@@ -219,6 +218,7 @@
 		0FA4638D2E1D094100C85D43 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				0FA463A32E1D249500C85D43 /* TabView */,
 				0FA463832E1D094100C85D43 /* Address */,
 				0FA463892E1D094100C85D43 /* Map */,
 				0FA4638C2E1D094100C85D43 /* Search */,
@@ -251,6 +251,14 @@
 				0FA463952E1D094100C85D43 /* Constants.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		0FA463A32E1D249500C85D43 /* TabView */ = {
+			isa = PBXGroup;
+			children = (
+				0FA463842E1D094100C85D43 /* MainTabView.swift */,
+			);
+			path = TabView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -400,7 +408,7 @@
 				0FA4639E2E1D094100C85D43 /* MapView.swift in Sources */,
 				0FA4639F2E1D094100C85D43 /* Coordinate.swift in Sources */,
 				0FA463A02E1D094100C85D43 /* MapViewModel.swift in Sources */,
-				0FA463A12E1D094100C85D43 /* MapTabView.swift in Sources */,
+				0FA463A12E1D094100C85D43 /* MainTabView.swift in Sources */,
 				0FA463A22E1D094100C85D43 /* AddressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -568,6 +576,7 @@
 				DEVELOPMENT_TEAM = X3YKR6M53J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app needs location access to show your current location on the map and provide address information.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -597,6 +606,7 @@
 				DEVELOPMENT_TEAM = X3YKR6M53J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app needs location access to show your current location on the map and provide address information.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

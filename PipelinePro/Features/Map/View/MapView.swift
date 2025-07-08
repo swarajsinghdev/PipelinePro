@@ -10,7 +10,7 @@ import MapKit
 
 /// Displays the map with current location
 struct MapView: View {
-    @ObservedObject var viewModel: MapViewModel
+    @State var viewModel: MapViewModel
     @ObservedObject var locationManager: LocationManager
     
     var body: some View {

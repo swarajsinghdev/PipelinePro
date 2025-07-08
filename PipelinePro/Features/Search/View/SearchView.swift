@@ -10,7 +10,7 @@ import MapKit
 
 /// Allows searching for nearby places and dropping pins
 struct SearchView: View {
-    @ObservedObject var viewModel: MapViewModel
+    @State var viewModel: MapViewModel
     
     var body: some View {
         VStack {
@@ -18,7 +18,9 @@ struct SearchView: View {
                 .textFieldStyle(.roundedBorder)
                 .padding()
                 .onSubmit {
-                    Task { await viewModel.searchNearby() }
+                    DispatchQueue.main.async {
+                        Task { await viewModel.searchNearby() }
+                    }
                 }
             
             Map(coordinateRegion: $viewModel.region, annotationItems: viewModel.searchResults) { place in

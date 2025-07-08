@@ -9,7 +9,7 @@ import SwiftUI
 
 /// Displays user's address and coordinates
 struct AddressView: View {
-    @ObservedObject var viewModel: MapViewModel
+    @State var viewModel: MapViewModel
     @ObservedObject var locationManager: LocationManager
     
     var body: some View {

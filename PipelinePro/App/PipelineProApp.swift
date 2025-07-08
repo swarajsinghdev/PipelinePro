@@ -11,7 +11,7 @@ import SwiftUI
 struct PipelineProApp: App {
     var body: some Scene {
         WindowGroup {
-            MapTabView()
+            MainTabView()
         }
     }
 }
