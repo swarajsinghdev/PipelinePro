@@ -40,6 +40,8 @@ final class MapViewModel {
     
     private let locationService: LocationService
     private var locationUpdateTimer: Timer?
+    private var addressUpdateTimer: Timer?
+    private let addressUpdateInterval: TimeInterval = 30.0 // Update address every 30 seconds
     
     // MARK: - Initialization
     
@@ -74,8 +76,14 @@ final class MapViewModel {
     
     /// Starts monitoring location updates.
     func startLocationUpdates() {
+        // Only start if not already active
+        guard !isLocationUpdatesActive else { return }
+        
         locationService.startLocationUpdates()
         isLocationUpdatesActive = true
+        
+        // Start periodic address updates
+        startAddressUpdates()
     }
     
     /// Stops monitoring location updates.
@@ -83,6 +91,8 @@ final class MapViewModel {
         locationService.stopLocationUpdates()
         locationUpdateTimer?.invalidate()
         locationUpdateTimer = nil
+        addressUpdateTimer?.invalidate()
+        addressUpdateTimer = nil
         isLocationUpdatesActive = false
     }
     
@@ -135,7 +145,7 @@ final class MapViewModel {
         
         // If not available, set up a timer to check periodically
         var timerCount = 0
-        locationUpdateTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] timer in
+        locationUpdateTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
             guard let self = self else {
                 timer.invalidate()
                 return
@@ -152,8 +162,23 @@ final class MapViewModel {
             }
             
             // Stop checking after 10 seconds to avoid infinite timer
-            if timerCount >= 20 {
+            if timerCount >= 10 {
                 timer.invalidate()
+            }
+        }
+    }
+    
+    /// Starts periodic address updates to reduce geocoding API calls.
+    private func startAddressUpdates() {
+        // Update address immediately
+        Task {
+            await updateUserAddress()
+        }
+        
+        // Then update periodically
+        addressUpdateTimer = Timer.scheduledTimer(withTimeInterval: addressUpdateInterval, repeats: true) { [weak self] _ in
+            Task {
+                await self?.updateUserAddress()
             }
         }
     }

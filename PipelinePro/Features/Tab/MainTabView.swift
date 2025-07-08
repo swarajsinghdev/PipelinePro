@@ -13,7 +13,7 @@ import CoreLocation
 /// 
 /// This view provides access to the three main features: Map, Address, and Search,
 /// each represented as a separate tab with appropriate icons and labels.
-struct TabScene: View {
+struct MainTabView: View {
     
     // MARK: - Properties
     
@@ -32,17 +32,17 @@ struct TabScene: View {
     
     var body: some View {
         TabView {
-            MapScene(viewModel: mapViewModel, locationManager: locationManager)
+            MapView(viewModel: mapViewModel, locationManager: locationManager)
                 .tabItem {
                     Label("Map", systemImage: "map")
                 }
             
-            AddressScene(viewModel: mapViewModel, locationManager: locationManager)
+            AddressView(viewModel: mapViewModel, locationManager: locationManager)
                 .tabItem {
                     Label("Address", systemImage: "house")
                 }
             
-            SearchScene(viewModel: mapViewModel)
+            SearchView(viewModel: mapViewModel)
                 .tabItem {
                     Label("Search", systemImage: "magnifyingglass")
                 }
@@ -64,5 +64,5 @@ struct TabScene: View {
 // MARK: - Preview
 
 #Preview {
-    TabScene()
+    MainTabView()
 }

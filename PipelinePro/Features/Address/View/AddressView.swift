@@ -12,7 +12,7 @@ import CoreLocation
 /// 
 /// This view shows detailed location information in a user-friendly format,
 /// with options to refresh the address and view coordinates.
-struct AddressScene: View {
+struct AddressView: View {
     
     // MARK: - Properties
     
@@ -190,7 +190,7 @@ struct AddressScene: View {
 // MARK: - Preview
 
 #Preview {
-    AddressScene(
+    AddressView(
         viewModel: MapViewModel(locationService: LocationManager()),
         locationManager: LocationManager()
     )

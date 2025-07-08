@@ -24,11 +24,17 @@ public enum Constants {
     /// Default search radius in meters
     static let defaultSearchRadius: Double = 1000
     
-    /// Default location accuracy for location services
-    static let defaultLocationAccuracy: CLLocationAccuracy = kCLLocationAccuracyBest
+    /// Default location accuracy for location services (optimized to reduce API calls)
+    static let defaultLocationAccuracy: CLLocationAccuracy = kCLLocationAccuracyHundredMeters
     
-    /// Minimum distance in meters before updating location
-    static let minimumLocationUpdateDistance: CLLocationDistance = 10
+    /// Minimum distance in meters before updating location (increased to reduce API calls)
+    static let minimumLocationUpdateDistance: CLLocationDistance = 50
+    
+    /// Minimum time interval between location updates in seconds
+    static let minimumLocationUpdateInterval: TimeInterval = 5.0
+    
+    /// Address update interval in seconds
+    static let addressUpdateInterval: TimeInterval = 30.0
     
     // MARK: - UI Configuration
     

@@ -12,7 +12,7 @@ import MapKit
 /// 
 /// This view provides a search interface with a text field for queries
 /// and displays results both on a map and in a list format.
-struct SearchScene: View {
+struct SearchView: View {
     
     // MARK: - Properties
     
@@ -163,7 +163,7 @@ struct SearchResultRowView: View {
 
 // MARK: - Private Methods
 
-private extension SearchScene {
+private extension SearchView {
     
     func handleSearchQueryChange(_ query: String) {
         guard !query.isEmpty else {
@@ -192,5 +192,5 @@ private extension SearchScene {
 // MARK: - Preview
 
 #Preview {
-    SearchScene(viewModel: MapViewModel(locationService: LocationManager()))
+    SearchView(viewModel: MapViewModel(locationService: LocationManager()))
 }

@@ -12,7 +12,7 @@ import MapKit
 /// 
 /// This view provides the primary mapping interface, showing the user's
 /// current location and any selected search results as annotations.
-struct MapScene: View {
+struct MapView: View {
     
     // MARK: - Properties
     
@@ -92,7 +92,7 @@ struct MapPinView: View {
 // MARK: - Preview
 
 #Preview {
-    MapScene(
+    MapView(
         viewModel: MapViewModel(locationService: LocationManager()),
         locationManager: LocationManager()
     )

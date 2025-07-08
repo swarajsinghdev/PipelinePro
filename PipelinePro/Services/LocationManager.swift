@@ -31,6 +31,9 @@ final class LocationManager: NSObject, LocationService, CLLocationManagerDelegat
     
     private let manager = CLLocationManager()
     private let geocoder = CLGeocoder()
+    private var lastLocationUpdateTime: Date = Date.distantPast
+    private let minimumLocationUpdateInterval: TimeInterval = 5.0 // Minimum 5 seconds between updates
+    private var geocodingTask: Task<Void, Never>?
     
     // MARK: - Initialization
     
@@ -43,8 +46,9 @@ final class LocationManager: NSObject, LocationService, CLLocationManagerDelegat
     
     private func setupLocationManager() {
         manager.delegate = self
-        manager.desiredAccuracy = kCLLocationAccuracyBest
-        manager.distanceFilter = 10 // Only update if moved 10 meters
+        manager.desiredAccuracy = kCLLocationAccuracyHundredMeters // Reduced accuracy to reduce API calls
+        manager.distanceFilter = 50 // Only update if moved 50 meters (increased from 10)
+        manager.allowsBackgroundLocationUpdates = false
         
         // Defer the authorization status check to avoid publishing during init
         DispatchQueue.main.async {
@@ -59,6 +63,9 @@ final class LocationManager: NSObject, LocationService, CLLocationManagerDelegat
     }
     
     func startLocationUpdates() {
+        // Prevent duplicate start calls
+        guard !isLocationUpdatesActive else { return }
+        
         guard authorizationStatus == .authorizedWhenInUse || authorizationStatus == .authorizedAlways else {
             requestLocationPermission()
             return
@@ -69,11 +76,20 @@ final class LocationManager: NSObject, LocationService, CLLocationManagerDelegat
     }
     
     func stopLocationUpdates() {
+        guard isLocationUpdatesActive else { return }
+        
         manager.stopUpdatingLocation()
         isLocationUpdatesActive = false
+        
+        // Cancel any ongoing geocoding tasks
+        geocodingTask?.cancel()
+        geocodingTask = nil
     }
     
     func getAddress(from coordinate: CLLocationCoordinate2D) async throws -> String {
+        // Cancel any existing geocoding task
+        geocodingTask?.cancel()
+        
         let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
         
         do {
@@ -92,30 +108,44 @@ final class LocationManager: NSObject, LocationService, CLLocationManagerDelegat
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         DispatchQueue.main.async {
             self.authorizationStatus = status
-            if status == .authorizedWhenInUse || status == .authorizedAlways {
-                self.startLocationUpdates()
-            } else {
-                self.stopLocationUpdates()
-            }
+            // Don't automatically start location updates on authorization change
+            // Let the app explicitly request location updates when needed
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
         
+        // Throttle location updates to prevent excessive API calls
+        let now = Date()
+        guard now.timeIntervalSince(lastLocationUpdateTime) >= minimumLocationUpdateInterval else {
+            return
+        }
+        
         // Only update if location has changed significantly
         if let current = currentLocation {
             let distance = location.distance(from: CLLocation(latitude: current.latitude, longitude: current.longitude))
-            if distance < 10 { return } // Don't update if moved less than 10 meters
+            if distance < 50 { return } // Don't update if moved less than 50 meters
         }
         
         DispatchQueue.main.async {
             self.currentLocation = location.coordinate
+            self.lastLocationUpdateTime = now
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Location error: \(error.localizedDescription)")
+        
+        // Stop location updates on error to prevent continuous retries
+        if let clError = error as? CLError {
+            switch clError.code {
+            case .denied, .locationUnknown:
+                stopLocationUpdates()
+            default:
+                break
+            }
+        }
     }
     
     // MARK: - Cleanup

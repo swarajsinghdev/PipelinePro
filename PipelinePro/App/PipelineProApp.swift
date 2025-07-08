@@ -18,7 +18,7 @@ struct PipelineProApp: App {
     
     var body: some Scene {
         WindowGroup {
-            TabScene()
+            MainTabView()
                 .preferredColorScheme(.light)
         }
     }
