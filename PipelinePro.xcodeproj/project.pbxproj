@@ -12,7 +12,6 @@
 		0F72FF3C2E1D52600015B406 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F72FF1B2E1D52600015B406 /* Place.swift */; };
 		0F72FF3D2E1D52600015B406 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F72FF382E1D52600015B406 /* Constants.swift */; };
 		0F72FF3E2E1D52600015B406 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F72FF322E1D52600015B406 /* LocationService.swift */; };
-		0F72FF3F2E1D52600015B406 /* PipelineProUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F72FF352E1D52600015B406 /* PipelineProUITests.swift */; };
 		0F72FF402E1D52600015B406 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F72FF312E1D52600015B406 /* LocationManager.swift */; };
 		0F72FF412E1D52600015B406 /* AddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F72FF212E1D52600015B406 /* AddressView.swift */; };
 		0F72FF422E1D52600015B406 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F72FF2E2E1D52600015B406 /* MainTabView.swift */; };
@@ -20,10 +19,10 @@
 		0F72FF442E1D52600015B406 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F72FF192E1D52600015B406 /* Coordinate.swift */; };
 		0F72FF452E1D52600015B406 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F72FF252E1D52600015B406 /* MapView.swift */; };
 		0F72FF462E1D52600015B406 /* PipelineProTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F72FF342E1D52600015B406 /* PipelineProTests.swift */; };
-		0F72FF472E1D52600015B406 /* PipelineProUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F72FF362E1D52600015B406 /* PipelineProUITestsLaunchTests.swift */; };
-		0F72FF482E1D52600015B406 /* PipelineProApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F72FF172E1D52600015B406 /* PipelineProApp.swift */; };
-		0F72FF492E1D52600015B406 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F72FF1F2E1D52600015B406 /* Assets.xcassets */; };
-		0F72FF4A2E1D52600015B406 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F72FF1D2E1D52600015B406 /* Preview Assets.xcassets */; };
+		0F72FF472E1D52600015B406 /* PipelineProUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F72FF352E1D52600015B406 /* PipelineProUITests.swift */; };
+		0F72FF482E1D52600015B406 /* PipelineProUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F72FF352E1D52600015B406 /* PipelineProUITests.swift */; };
+		0F72FF492E1D52600015B406 /* PipelineProApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F72FF172E1D52600015B406 /* PipelineProApp.swift */; };
+		0F72FF5A2E1D5B0F0015B406 /* PipelineProApp.swift in Resources */ = {isa = PBXBuildFile; fileRef = 0F72FF172E1D52600015B406 /* PipelineProApp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -207,7 +206,7 @@
 			path = Tab;
 			sourceTree = "<group>";
 		};
-		0F72FF302E1D52600015B406 /* Scenes */ = {
+		0F72FF302E1D52600015B406 /* Features */ = {
 			isa = PBXGroup;
 			children = (
 				0F72FF242E1D52600015B406 /* Address */,
@@ -215,7 +214,7 @@
 				0F72FF2D2E1D52600015B406 /* Search */,
 				0F72FF2F2E1D52600015B406 /* Tab */,
 			);
-			path = Scenes;
+			path = Features;
 			sourceTree = "<group>";
 		};
 		0F72FF332E1D52600015B406 /* Services */ = {
@@ -269,8 +268,9 @@
 				0F72FF182E1D52600015B406 /* App */,
 				0F72FF1C2E1D52600015B406 /* Models */,
 				0F72FF202E1D52600015B406 /* Resources */,
-				0F72FF302E1D52600015B406 /* Scenes */,
+				0F72FF302E1D52600015B406 /* Features */,
 				0F72FF332E1D52600015B406 /* Services */,
+				0F72FF372E1D52600015B406 /* Tests */,
 				0F72FF392E1D52600015B406 /* Utilities */,
 			);
 			path = PipelinePro;
@@ -387,8 +387,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F72FF492E1D52600015B406 /* Assets.xcassets in Resources */,
-				0F72FF4A2E1D52600015B406 /* Preview Assets.xcassets in Resources */,
+				0F72FF5A2E1D5B0F0015B406 /* PipelineProApp.swift in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,7 +423,7 @@
 				0F72FF432E1D52600015B406 /* CoordinateCodable.swift in Sources */,
 				0F72FF442E1D52600015B406 /* Coordinate.swift in Sources */,
 				0F72FF452E1D52600015B406 /* MapView.swift in Sources */,
-				0F72FF482E1D52600015B406 /* PipelineProApp.swift in Sources */,
+				0F72FF492E1D52600015B406 /* PipelineProApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,6 +431,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F72FF462E1D52600015B406 /* PipelineProTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,6 +439,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F72FF472E1D52600015B406 /* PipelineProUITests.swift in Sources */,
+				0F72FF482E1D52600015B406 /* PipelineProUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
