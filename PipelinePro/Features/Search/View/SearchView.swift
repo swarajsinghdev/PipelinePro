@@ -100,7 +100,7 @@ struct SearchView: View {
                 }
             }
         }
-        .frame(height: 200)
+        .ignoresSafeArea()
     }
     
     private var resultsList: some View {
